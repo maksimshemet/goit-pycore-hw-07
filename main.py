@@ -131,7 +131,6 @@ def input_error(func):
 
     return inner
 
-
 @input_error
 def add_contact(args, book: AddressBook):
     name, phone, *_ = args
@@ -145,7 +144,6 @@ def add_contact(args, book: AddressBook):
         record.add_phone(phone)
     return message
 
-
 @input_error
 def add_birthday(args, book: AddressBook):
     name, birthday_str, *_ = args
@@ -155,7 +153,6 @@ def add_birthday(args, book: AddressBook):
     record.add_birthday(birthday_str)
     return f"Birthday added for {name}."
 
-
 @input_error
 def show_birthday(args, book: AddressBook):
     name, *_ = args
@@ -164,14 +161,12 @@ def show_birthday(args, book: AddressBook):
         return f"Contact {name} not found."
     return record.show_birthday()
 
-
 @input_error
 def birthdays(book: AddressBook):
     upcoming_birthdays = book.get_upcoming_birthdays()
     if not upcoming_birthdays:
         return "No upcoming birthdays."
     return "\n".join(str(record) for record in upcoming_birthdays)
-
 
 @input_error
 def edit_phone(args, book: AddressBook):
@@ -182,7 +177,6 @@ def edit_phone(args, book: AddressBook):
     record.edit_phone(old_phone, new_phone)
     return f"Phone number updated for {name}."
 
-
 @input_error
 def show_phone(args, book: AddressBook):
     name, *_ = args
@@ -191,10 +185,8 @@ def show_phone(args, book: AddressBook):
         return f"Contact {name} not found."
     return f"Phones for {name}: " + "; ".join(p.value for p in record.phones)
 
-
 def parse_input(user_input):
     return user_input.split()
-
 
 def main():
     book = AddressBook()
@@ -238,7 +230,6 @@ def main():
 
             case _:
                 print("Invalid command.")
-
 
 if __name__ == "__main__":
     main()
